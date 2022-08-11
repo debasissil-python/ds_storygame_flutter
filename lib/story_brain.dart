@@ -6,8 +6,6 @@
 
 //TODONE: Step 16 - Create a property called storyNumber which starts with a value of 0. This will be used to track which story the user is currently viewing.
 
-import 'package:flutter/material.dart';
-
 import 'story.dart';
 
 class StoryBrain {
@@ -15,30 +13,65 @@ class StoryBrain {
   int storyTitle = 0;
 
   List<Story> _storyData = [
+    //Story (
+    //   storyTitle = '';
+    //   choice1 = '';
+    //   choice2 = '';)
     Story(
-        'Your car has blown a tire on a winding road in the middle of nowhere with no cell phone reception. You decide to hitchhike. A rusty pickup truck rumbles to a stop next to you. A man with a wide brimmed hat with soulless eyes opens the passenger door for you and asks: "Need a ride, boy?".',
-        'I\'ll hop in. Thanks for the help!',
-        'Better ask him if he\'s a murderer first.'),
+        //_storyNumber = 0
+        'You went for a solo hiking trip and got lost in the middle of nowhere with no cell phone reception. \n\nIt was already dark so You decide to go towards the road to hitchhike to the nearest town. \n\nSuddenly you saw A rusty house with a faint light. \n\nAs you are approaching the house a man with a shovel comes out of the jungle and asks: \n"Need a place, boy?".',
+        'I\'ll say Thanks for the help!',
+        'Better ask if he knows the way to the town.'),
     Story(
-        'He nods slowly, unphased by the question.',
-        'At least he\'s honest. I\'ll climb in.',
-        'Wait, I know how to change a tire.'),
+        //_storyNumber = 1
+        'He nods slowly, unphased by the question and said - \n\n"Come on in, you will not be able to make it alive. \n\nThis jungle is full of wild animals".',
+        'No other option. I start following him.',
+        'Well, I will take that chance.'),
     Story(
-        'As you begin to drive, the stranger starts talking about his relationship with his mother. He gets angrier and angrier by the minute. He asks you to open the glovebox. Inside you find a bloody knife, two severed fingers, and a cassette tape of Elton John. He reaches for the glove box.',
-        'I love Elton John! Hand him the cassette tape.',
-        'It\'s him or me! You take the knife and stab him.'),
+        //_storyNumber = 2
+        'As you start following him, the stranger starts talking about his relationship with his wife. \n\nHe gets angrier and angrier by the minute. He asks you to open the door. \n\nInside you find a stinking smell, a huge knife placed on the table, and a music system playing Richard Marx. \n\nHe goes inside the house. \n\n"Are you coming or not ?" - He asked.',
+        'I love Richard Marx! I go in with a smile.',
+        "He'll kill me! Let me run for the jungle."),
     Story(
-        'What? Such a cop out! Did you know traffic accidents are the second leading cause of accidental death for most adult age groups?',
+        //_storyNumber = 3
+        'You bond with the person while crooning verses of "Right here waiting". \n\nHe invites you to dinner while sharing his life stories with you. \n\nBefore you go to bed he asks you if you want to go hunting.',
+        'Yes why not',
+        "I'm too tired to go"),
+    Story(
+        //_storyNumber = 4
+        'You took a sprint in the dark! \n\nAs you could not see anything you hit a rock and toppled over. \n\nYou covered your head to protect yourself from serious injuries, fell into a ditch and fainted. \n\nYou regained consciousness in the morning only to find the man you were running from',
+        'Apologize for my deed',
+        'Ask him how far is the nearest town'),
+    Story(
+        //_storyNumber = 5
+        'You have an uncanny feeling that in this hunting game you might be hunted. \n\nYou decide what to do',
+        'I will run towards the jungle',
+        'I am willing to take the chance to be with him'),
+    Story(
+        //_storyNumber = 6
+        'You acted as if you are too tired and went off to sleep. \n\nYou could hear him go out of the door in the night.\n\nYou slept over.\n\nWhen you woke up you found he is standing in front of you, grinning.',
+        'I apologized for not going',
+        'I thanked him for his help and left'),
+    Story(
+        //_storyNumber = 7
+        '"Don\'t worry my friend" - he said with an assuring smile. \n\nHe invited you to come over for a cup of hot coffee and he also told you the way to the town.',
+        'I accepted the offer',
+        'I thanked him and moved on'),
+    Story(
+        //_storyNumber = 8
+        'You went to the jungle with him and had a fantastic time. \n\nIn the morning he served you a cup of hot coffee, a grand breakfast and also told you the way to the town.',
         'Restart',
         ''),
     Story(
-        'As you smash through the guardrail and careen towards the jagged rocks below you reflect on the dubious wisdom of stabbing someone while they are driving a car you are in.',
+        //_storyNumber = 9
+        'He served you a cup of hot coffee, a grand breakfast and also helped you with a ride to the town.',
         'Restart',
         ''),
     Story(
-        'You bond with the murderer while crooning verses of "Can you feel the love tonight". He drops you off at the next town. Before you go he asks you if you know any good places to dump bodies. You reply: "Try the pier".',
+        //_storyNumber = 10
+        'He told you the way to the town.',
         'Restart',
-        '')
+        ''),
   ];
 
   //TODONE: Step 8 - Create a method called getStory() that returns the first storyTitle from _storyData.
@@ -68,12 +101,32 @@ class StoryBrain {
     } else if (choiceNumber == 1 && _storyNumber == 1) {
       _storyNumber = 2;
     } else if (choiceNumber == 2 && _storyNumber == 1) {
-      _storyNumber = 3;
+      _storyNumber = 4;
     } else if (choiceNumber == 1 && _storyNumber == 2) {
-      _storyNumber = 5;
+      _storyNumber = 3;
     } else if (choiceNumber == 2 && _storyNumber == 2) {
       _storyNumber = 4;
-    } else if (_storyNumber == 3 || _storyNumber == 4 || _storyNumber == 5) {
+    } else if (choiceNumber == 1 && _storyNumber == 3) {
+      _storyNumber = 5;
+    } else if (choiceNumber == 2 && _storyNumber == 3) {
+      _storyNumber = 6;
+    } else if (choiceNumber == 1 && _storyNumber == 4) {
+      _storyNumber = 7;
+    } else if (choiceNumber == 2 && _storyNumber == 4) {
+      _storyNumber = 7;
+    } else if (choiceNumber == 1 && _storyNumber == 5) {
+      _storyNumber = 4;
+    } else if (choiceNumber == 2 && _storyNumber == 5) {
+      _storyNumber = 8;
+    } else if (choiceNumber == 1 && _storyNumber == 6) {
+      _storyNumber = 7;
+    } else if (choiceNumber == 2 && _storyNumber == 6) {
+      _storyNumber = 9;
+    } else if (choiceNumber == 1 && _storyNumber == 7) {
+      _storyNumber = 9;
+    } else if (choiceNumber == 2 && _storyNumber == 7) {
+      _storyNumber = 10;
+    } else if (_storyNumber == 8 || _storyNumber == 9 || _storyNumber == 10) {
       restart();
     }
   }
@@ -84,7 +137,14 @@ class StoryBrain {
 
   bool buttonShouldBeVisible() {
     // if(_storyNumber < 3) {}
-    if (_storyNumber == 0 || _storyNumber == 1 || _storyNumber == 2) {
+    if (_storyNumber == 0 ||
+        _storyNumber == 1 ||
+        _storyNumber == 2 ||
+        _storyNumber == 3 ||
+        _storyNumber == 4 ||
+        _storyNumber == 5 ||
+        _storyNumber == 6 ||
+        _storyNumber == 7) {
       return true;
     } else {
       return false;

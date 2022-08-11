@@ -8,6 +8,7 @@ void main() => runApp(StoryGame());
 class StoryGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: StoryPage(),
     );
@@ -26,13 +27,20 @@ class _StoryPageState extends State<StoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        title: Text(
+          'Story Time',
+        ),
+      ),
       body: Container(
         //TODONE: Step 1 - Add background.png to this Container as a background image.
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("images/background.png"), fit: BoxFit.cover),
         ),
-        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+        padding: EdgeInsets.fromLTRB(20, 10, 20, 2),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
@@ -44,10 +52,11 @@ class _StoryPageState extends State<StoryPage> {
                   child: Text(
                     //TODONE: Step 10 - use the storyBrain to get the first story title and display it in this Text Widget.
                     storyBrain.getStory(),
+                    textAlign: TextAlign.center,
                     // if (storyNumber < _storyData.length - 1) {
                     //    storyNumber++;
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
@@ -65,19 +74,24 @@ class _StoryPageState extends State<StoryPage> {
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                    ),
                   ),
                   child: Text(
                     //TODONE: Step 13 - Use the storyBrain to get the text for choice 1.
                     storyBrain.getChoice1(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16.0,
+                      fontSize: 14.0,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Expanded(
                 //flex: 1,
@@ -96,30 +110,35 @@ class _StoryPageState extends State<StoryPage> {
                     //color: Colors.blue,
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                      ),
                     ),
                     child: Text(
                       //TODONE: Step 14 - Use the storyBrain to get the text for choice 2.
                       storyBrain.getChoice2(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 14.0,
                       ),
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Expanded(
                 child: Text(
-                  'Fuelled By: \n Hobby Networking',
+                  'Fuelled By: \n CodoWeb',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.yellow,
                     fontFamily: 'Pacifico',
                     fontStyle: FontStyle.italic,
-                    fontSize: 14,
+                    fontSize: 11,
                     letterSpacing: 2,
                     fontWeight: FontWeight.w300,
                   ),
